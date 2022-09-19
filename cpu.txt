@@ -1,0 +1,55 @@
+//Implementation of FCFS scheduling 
+#include <stdio.h>
+ void get_details(int pid[], int bt[], int n)
+{
+	for(int i = 0; i < n; i++)
+	{
+		scanf("%d", &pid[i]);
+		
+	}
+	for(int i = 0; i < n; i++)
+	{
+		scanf("%d", &bt[i]);
+	}
+	
+}
+
+void get_waiting(int wt[], int bt[], int n)
+{
+	wt[0]=0;
+ 
+    //for calculating waiting time of each process
+    for(i=1; i<n; i++)
+    {
+        wt[i]= bt[i-1]+ wt[i-1];
+	}
+}
+
+int main()
+{
+	int no_processes;
+	scanf("%d", &no_processes);
+	int pid[n], bt[n]; // pid --  process id, bt -- burst time 
+	
+	get_details(n, pid, bt); //  pid and bt from 
+    int wt[n];
+    get_waiting(wt, bt, n);
+ 
+
+    float twt=0.0;
+    float tat= 0.0;
+    // twt -- total waiting time, tat -- total around time
+    for(i=0; i<n; i++)
+    {
+        twt += wt[i]; 
+        tat += (wt[i]+bt[i]);
+    }
+    float att,awt;
+    
+    awt = twt/n; // average waiting time
+    att = tat/n; // average turn around time
+    printf("Avg. waiting time= %f\n",awt);
+    printf("Avg. turnaround time= %f",att);
+    
+    return 0;
+}
